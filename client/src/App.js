@@ -1,12 +1,9 @@
 // App.js
 
 import "./App.css";
-import io from "socket.io-client";
 import { useEffect, useState, useRef } from "react";
 
-const socket = io.connect("http://localhost:3001");
-
-function App() {
+function App({ socket }) {
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
