@@ -1,7 +1,5 @@
-// App.js
-
-import "./App.css";
-import { useEffect, useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from 'react';
+import './App.css';
 
 function App({ socket }) {
   const [room, setRoom] = useState("");
@@ -76,14 +74,18 @@ function App({ socket }) {
           <button onClick={leaveRoom}>Leave Room</button>
           <div className="message-container">
             {messages.map((msg, index) => (
-              <div key={index}>
+              <div
+                key={index}
+                className={`message ${msg.username === 'Me' ? 'my-message' : 'other-message'}`}
+              >
                 <strong>{msg.username}:</strong> {msg.message}
               </div>
             ))}
             <div ref={messagesEndRef} />
           </div>
-          <div>
+          <div className="input-container">
             <input
+              type="text"
               placeholder="Message..."
               value={message}
               onChange={(event) => {
